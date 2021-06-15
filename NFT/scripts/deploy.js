@@ -2,11 +2,10 @@ const hre = require("hardhat");
 
 
 async function main() {
-  const Token = await hre.ethers.getContractFactory("ERC721PresetMinterPauserAutoId");
-  const token = await Token.deploy("Name", "Symbol", "base_url");
-
+  const Token = await hre.ethers.getContractFactory("Poketoken");
+  const token = await Token.deploy();
   await token.deployed();
-  console.log("ERC721PresetMinterPauserAutoId deployed to:", token.address);
+  console.log("Poketoken deployed to:", token.address);
 }
 
 main()

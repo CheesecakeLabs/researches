@@ -57,3 +57,14 @@ replace the sample script with the deploy one and execute it with hardhat
 ```bash
 npx hardhat run scripts/deploy.js
 ```
+
+
+
+### Todo
+
+1. create tests
+1. connect to ipfs
+1. script generate artifacts and make a copy to src folder
+1. create frontend
+1. deploy to a testnet
+1. write blogpost
