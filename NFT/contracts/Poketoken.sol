@@ -15,6 +15,7 @@ contract Poketoken is ERC721, ERC721URIStorage, ERC721Enumerable, Ownable {
         address payable owner;
         uint128 price;
     }
+
     mapping(uint256 => ForSale) private _forSale;
     uint256[] private _allForSale;
 
@@ -53,6 +54,15 @@ contract Poketoken is ERC721, ERC721URIStorage, ERC721Enumerable, Ownable {
         return super.supportsInterface(interfaceId);
     }
 
+    function _isForSale(uint256 tokenId) private view returns (bool) {
+        for (uint256 i = 0; i < _allForSale.length; i++) {
+            if (_allForSale[i] == tokenId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // ---- Poketoken marketplace logic ----
 
     function _setForSale(
@@ -81,9 +91,18 @@ contract Poketoken is ERC721, ERC721URIStorage, ERC721Enumerable, Ownable {
         }
     }
 
+    function getForSale(uint256 tokenId)
+        external
+        view
+        returns (ForSale memory)
+    {
+        return _forSale[tokenId];
+    }
+
     function addForSale(uint128 price, uint256 tokenId) external payable {
         require(msg.value == 0.02 ether);
         require(msg.sender == ERC721.ownerOf(tokenId));
+        require(!_isForSale(tokenId));
         _setForSale(payable(msg.sender), price, tokenId);
     }
 
