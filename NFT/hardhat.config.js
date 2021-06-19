@@ -8,8 +8,8 @@ task("accounts", "Prints the list of accounts", async () => {
   }
 });
 
-const ALCHEMY_API_URL = "Change this";
-const WALLET_PRIVATE_KEY = "Change this";
+const ALCHEMY_API_URL = "https://change.this"; // Change this
+const WALLET_PRIVATE_KEY = "0x0000000000000000000000000000000000000000000000000000000000000000"; // Change this
 
 module.exports = {
   networks: {
