@@ -1,0 +1,22 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "node server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "@pinata/sdk": "^1.1.23",
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "ethers": "^5.3.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
+}
