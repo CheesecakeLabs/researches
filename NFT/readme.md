@@ -91,7 +91,7 @@ To deploy the contract to a live network you'll need:
 3. Create a network on `hardhat.config.js` with the account's private key
 4. Execute the deploy script pointing to the desired network e.g. `npx hardhat run scripts/deploy.js --network rinkeby`
 
-The hardhat.config file has a Rinkeby Network and you can read more about setting networks on https://hardhat.org/hardhat-network/
+This project's `hardhat.config` file has a Rinkeby Network pre configured, where you only need to set the `ALCHEMY_API_URL` and the `WALLET_PRIVATE_KEY`. You can read more about setting networks on https://hardhat.org/hardhat-network/
 
 ## Testnet
 

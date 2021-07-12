@@ -27,5 +27,5 @@ install-dependencies:
 compile-and-copy:
 	@echo "Compiling Poketoken"
 	npx hardhat compile
-	@echo "Copying Contract"""
+	@echo "Copying Contract"
 	cp -f artifacts/contracts/Poketoken.sol/Poketoken.json web/public/Poketoken.json
