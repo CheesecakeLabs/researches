@@ -1,0 +1,15 @@
+{
+  "name": "electron-notification",
+  "version": "1.0.0",
+  "description": "CKL - Electron push-notification example",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/CheesecakeLabs/researches",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^13.1.9"
+  }
+}
