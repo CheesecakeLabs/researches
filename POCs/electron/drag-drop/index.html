@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Drag-n-drop PoC</title>
+
+    <style type="text/css">
+      .drag-div {
+        border: 1px solid black;
+        border-radius: 3px;
+        padding: 5px;
+        display: inline-block;
+      }
+
+      .drop-div {
+        border: 1px solid black;
+        margin-top: 20px;
+        width: 300px;
+        height: 300px;
+      }
+
+      .result {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drag and drop test</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+    <br>
+    <div class="drag-div" draggable="true" id="drag">Drag me</div>
+
+    <div class="drop-div" droppable="true" id="drop">Drop here</div>
+
+    <div id="result"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
