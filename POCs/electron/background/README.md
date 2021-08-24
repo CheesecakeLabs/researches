@@ -22,3 +22,11 @@ To create a background application, has to create a ``Tray`` object and set the 
     { label: 'Item2', type: 'radio' }
   ])
   ```
+  
+## Example
+
+The example here shows that the application is running on the backgroud, with a system icon tray. To open application just click on the icon tray and select the "Show Window" option.
+
+https://user-images.githubusercontent.com/37526665/130630099-c310d018-0c2b-4d29-97dd-d9d5a11c6f4f.mov
+
+
