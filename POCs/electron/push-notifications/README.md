@@ -20,3 +20,10 @@ const NOTIFICATION_BODY = 'Notification from the Renderer process.'
 
 new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
 ```
+
+## Example
+
+To test the application, just click the "Create Push Notification" button and it will create a notification.
+
+https://user-images.githubusercontent.com/37526665/130626427-742b9130-6833-410f-b5d0-32cbc63e7b16.mov
+
