@@ -55,3 +55,11 @@ dropDiv.addEventListener('dragover', (e) => {
   e.stopPropagation();
 });
 ```
+
+## Example
+
+To test the application, just click on "Drag me" block and drag to outside application and drop the file on the desktop, also the application can receive a file
+and you can just drop on "Drop here" space.
+
+https://user-images.githubusercontent.com/37526665/130632036-5e67c344-e77c-4051-a0cb-abcf1685620b.mov
+
