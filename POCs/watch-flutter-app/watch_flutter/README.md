@@ -31,8 +31,8 @@ flutter pub get
 
 <b>Step 3:</b>
 
-This project in this moment run only by Xcode, open your XCode and choose the path -> POCs/watch-flutter-app/watch-flutter/ios:
-Go to your XCode and run watch option
+This project in this moment run only by Xcode, open your Xcode and choose the path -> _POCs/watch-flutter-app/watch-flutter/ios_, 
+and in your XCode run watch option
 
 
 Ex:
