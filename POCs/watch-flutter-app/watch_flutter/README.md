@@ -35,6 +35,11 @@ This project in this moment run only by Xcode, open your XCode and choose the pa
 Go to your XCode and run watch option
 
 
+Ex:
+
+https://user-images.githubusercontent.com/19153832/162841803-00aa9077-2d25-4793-b43b-f956cce3671c.mov
+
+
 
 ## How start a new project Watch and Flutter
 
