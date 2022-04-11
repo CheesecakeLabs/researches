@@ -69,6 +69,7 @@ _It’s a channel that Flutter opens for writing Native code and connects back t
 <b>Step 1:</b>
 
 <b>Adding Flutter Method Channel in iOS</b>
+
 _Must be add in the AppDelegate to start listening to the data coming from Flutter code._
 
 ```dart
@@ -154,6 +155,7 @@ channel.invokeMethod("flutterToWatch", {"method": "sendToNative", "data": "Hello
 <b>Step 3:</b>
 
 <b>Adding Watch session</b>
+
 _Must be add in the ViewModel to start watch session._
 ```swift 
 class WatchViewModel: NSObject, ObservableObject {
