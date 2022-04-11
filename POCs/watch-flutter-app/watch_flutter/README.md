@@ -44,18 +44,18 @@ https://user-images.githubusercontent.com/19153832/162842111-71ae9608-0bdd-4a31-
 
 ## How start a new project Watch and Flutter
 
-<b>Step1:</b>
+<b>Step 1:</b>
 
 - Create flutter starter project: [link](https://docs.flutter.dev/development/tools/vs-code)
 - WCSessionDelegate works only above 9.3 iOS target version, must to configure the project Runner target in the XCode to use 9.3 version or above. 
 
-<b>Step2:</b>
+<b>Step 2:</b>
 
 Get your flutter Project and Add Watch Extension
 - Go to your Xcode Project and select File > New > Target > choose watchOS template > Application > Watch App for iOS App. Choose your watch project name, Team and choose SwiftUI as interface.
 
 
-<b>Step3:</b>
+<b>Step 3:</b>
 
 - Set all targets with the same version in your Xcode.
 
