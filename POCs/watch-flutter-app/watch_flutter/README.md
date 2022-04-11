@@ -37,7 +37,8 @@ Go to your XCode and run watch option
 
 Ex:
 
-https://user-images.githubusercontent.com/19153832/162841803-00aa9077-2d25-4793-b43b-f956cce3671c.mov
+
+https://user-images.githubusercontent.com/19153832/162842111-71ae9608-0bdd-4a31-9ccc-30eb633812cc.mov
 
 
 
