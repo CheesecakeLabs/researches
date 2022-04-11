@@ -1,10 +1,22 @@
-# watch_flutter
+# POC - Watch Flutter
 
-A new Flutter project.
+This project is a proof of concept about Watch Native and Flutter application.
+
+<video>
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+create flutter starter project: (https://docs.flutter.dev/development/tools/vs-code)
+
+
+
+
+
+
+
+
+
+
 
 A few resources to get you started if this is your first Flutter project:
 
