@@ -128,15 +128,45 @@ _Must be add in the AppDelegate to start listening to the data coming from Flutt
 <b>Step 2:</b>
 
 <b>Listening in Flutter code when Watch send a message</b>
+
+```dart
+extension AppDelegate: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            if let method = message["method"] as? String, let controller = self.window?.rootViewController as? FlutterViewController {
+                let channel = FlutterMethodChannel(
+                    name: "com.watch",
+                    binaryMessenger: controller.binaryMessenger)
+                channel.invokeMethod(method, arguments: message)
+            }
+        }
+    }
+}
+```
+
+<b>Listening in Flutter when app code send a message to watch device</b>
+
 ```dart
 //name of your channel
 final channel = MethodChannel('com.watch');
 
 Future<void> _initFlutterChannel() async {
     await channel.setMethodCallHandler((call) async {
-      // Receive data from Native must be equal 'sendCounterToFlutter' value
       switch (call.method) {
-        case "sendToFlutter":
+        case "flutterToWatch":
           print('doing something');
           break;
         default:
@@ -185,25 +215,60 @@ class WatchViewModel: NSObject, ObservableObject {
 view raw
 ```
 
-<b>Sending message to flutter app</b>
+<b>Listening message from flutter app</b> and <b>Sending message to flutter app</b>
 ```swift
-func sendDataMessage(for method: WatchSendMethod, data: [String: Any] = [:]) {
-  sendMessage(for: method.rawValue, data: data)
+extension WatchViewModel: WCSessionDelegate {
+    
+   //status from session
+   func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        switch activationState {
+        case .activated:
+            print("WCSession activated successfully")
+            onPaired()
+        case .inactive:
+            print("Unable to activate the WCSession. Error: \(error?.localizedDescription ?? "--")")
+            onUnPaired()
+        case .notActivated:
+            print("Unexpected .notActivated state received after trying to activate the WCSession")
+            onUnPaired()
+        @unknown default:
+            print("Unexpected state received after trying to activate the WCSession")
+        }
+    }
+    
+    // Receive message From AppDelegate.swift that send from iOS devices
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            guard let method = message["method"] as? String, let enumMethod = WatchReceiveMethod(rawValue: method) else {
+                return
+            }
+
+            switch enumMethod {
+            case .sendToNative:
+                print('doing something!')
+            }
+        }
+    }
+    
+    func sendDataMessage(for method: WatchSendMethod, data: [String: Any] = [:]) {
+      sendMessage(for: method.rawValue, data: data)
+    }
+
+    func sendMessage(for method: String, data: [String: Any] = [:]) {
+      //check if app is reachable to send message
+      guard session.isReachable else {
+        return
+      }
+      let messageData: [String: Any] = ["method": method, "data": data]
+      session.sendMessage(messageData, replyHandler: nil, errorHandler: nil)
+    }
+
+    // How to use
+    //sendToFlutter -> key that flutter is listening to doing something!
+    viewModel.sendDataMessage(for: .sendToFlutter, data: ["msg": "Hello from watch"])
+    
 }
 
-func sendMessage(for method: String, data: [String: Any] = [:]) {
-  //check if app is reachable to send message
-  guard session.isReachable else {
-    return
-  }
-  let messageData: [String: Any] = ["method": method, "data": data]
-  session.sendMessage(messageData, replyHandler: nil, errorHandler: nil)
-}
-
-// How to use
-//sendToFlutter -> key that flutter is listening to doing something!
-viewModel.sendDataMessage(for: .sendToFlutter, data: ["msg": "Hello from watch"])
-```
 
 
 
