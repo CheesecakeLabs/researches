@@ -13,7 +13,7 @@ This project is a proof of concept about Watch Native and Flutter application.
 ## Getting Started
 The proof of concept contains the minimal implementation required to create a communication bettwen watch and flutter app. The repository code is preloaded with some basic components like basic app architecture, app theme, constants and using flutter method channel and WCSessionDelegate.
 
-## How to Use
+## How to Start
 <b>Step 1:</b> 
 
 Download or clone this repo by using the link below:
