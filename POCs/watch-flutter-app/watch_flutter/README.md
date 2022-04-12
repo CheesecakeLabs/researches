@@ -273,6 +273,7 @@ extension WatchViewModel: WCSessionDelegate {
     viewModel.sendDataMessage(for: .sendToFlutter, data: ["msg": "Hello from watch"])
     
 }
+```
 
 
 ## References
