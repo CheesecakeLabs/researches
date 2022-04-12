@@ -41,6 +41,11 @@ Ex:
 https://user-images.githubusercontent.com/19153832/162842111-71ae9608-0bdd-4a31-9ccc-30eb633812cc.mov
 
 
+## Features
+
+- Watch and App Communication 
+
+
 
 ## How start a new project Watch and Flutter
 
