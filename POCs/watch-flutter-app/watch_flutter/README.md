@@ -278,16 +278,25 @@ extension WatchViewModel: WCSessionDelegate {
 
 ## References
 
-[WCSession](https://developer.apple.com/documentation/watchconnectivity/wcsession#//apple_ref/doc/uid/TP40015237-CH1-SW16)
-[SwiftUI](https://developer.apple.com/xcode/swiftui/)
-[Storyboard x SwiftUI](https://medium.com/technology-nineleaps/swift-ui-or-storyboard-675ff2b40829)
-[Flutter Method Channel](https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.html)
-[Flutter App via method channel](https://medium.com/kbtg-life/adding-apple-watch-to-flutter-app-via-flutter-method-channel-f1443532d94e)
-[Fluuter and Native Communication](https://betterprogramming.pub/communicate-between-flutter-and-native-android-and-ios-code-using-platform-channel-7932f46b6aee)
-[Flutter Plataform Channel](https://stablekernel.com/article/flutter-platform-channels-quick-start/)
-[Flutter + watch](https://medium.com/@ferrazrx/flutter-apple-watch-swift-b43110dc4545)
-[Flutter background](https://medium.com/vrt-digital-studio/flutter-workmanager-81e0cfbd6f6e)
-[Flutter background proccess](https://docs.flutter.dev/development/packages-and-plugins/background-processes)
+- [WCSession](https://developer.apple.com/documentation/watchconnectivity/wcsession#//apple_ref/doc/uid/TP40015237-CH1-SW16)
+
+- [SwiftUI](https://developer.apple.com/xcode/swiftui/)
+
+- [Storyboard x SwiftUI](https://medium.com/technology-nineleaps/swift-ui-or-storyboard-675ff2b40829)
+
+- [Flutter Method Channel](https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.html)
+
+- [Flutter App via method channel](https://medium.com/kbtg-life/adding-apple-watch-to-flutter-app-via-flutter-method-channel-f1443532d94e)
+
+- [Fluuter and Native Communication](https://betterprogramming.pub/communicate-between-flutter-and-native-android-and-ios-code-using-platform-channel-7932f46b6aee)
+
+- [Flutter Plataform Channel](https://stablekernel.com/article/flutter-platform-channels-quick-start/)
+
+- [Flutter + watch](https://medium.com/@ferrazrx/flutter-apple-watch-swift-b43110dc4545)
+
+- [Flutter background](https://medium.com/vrt-digital-studio/flutter-workmanager-81e0cfbd6f6e)
+
+- [Flutter background proccess](https://docs.flutter.dev/development/packages-and-plugins/background-processes)
 
 
 
