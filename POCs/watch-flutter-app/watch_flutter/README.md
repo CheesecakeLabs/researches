@@ -288,7 +288,7 @@ extension WatchViewModel: WCSessionDelegate {
 
 - [Flutter App via method channel](https://medium.com/kbtg-life/adding-apple-watch-to-flutter-app-via-flutter-method-channel-f1443532d94e)
 
-- [Fluuter and Native Communication](https://betterprogramming.pub/communicate-between-flutter-and-native-android-and-ios-code-using-platform-channel-7932f46b6aee)
+- [Flutter and Native Communication](https://betterprogramming.pub/communicate-between-flutter-and-native-android-and-ios-code-using-platform-channel-7932f46b6aee)
 
 - [Flutter Plataform Channel](https://stablekernel.com/article/flutter-platform-channels-quick-start/)
 
