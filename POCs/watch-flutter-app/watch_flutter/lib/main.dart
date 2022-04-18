@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  final channel = const MethodChannel('com.example.watchFlutter');
+  final channel = const MethodChannel('io.ckl.pocwatch');
 
   Future<void> _initFlutterChannel() async {
     channel.setMethodCallHandler((call) async {
@@ -54,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       _counter++;
-      channel.invokeMethod("flutterToWatch", {"method": "sendCounterToNative", "data": _counter});
+      channel.invokeMethod("flutterToWatch",
+          {"method": "sendCounterToNative", "data": _counter});
     });
   }
 
