@@ -275,7 +275,62 @@ extension WatchViewModel: WCSessionDelegate {
 }
 ```
 
+## How to build a Flutter + Apple Watch app
 
+When you create a Flutter project with an Apple Watch extension, you'll have three targets on your xcode project: Runner, watch and watch WatchKit Extension. Both of them need a Bundle Identifier and a Provisioning Profile.
+
+Basically, you'll need to create three different Provisioning Profile on the Apple Developer portal and set it up on your project.
+
+After setting up your Profiles and the certificate (you can use the same certificate for both targets) for each target you'll Archive the **Runner** target. Then, you'll be able to distribute your app with the Apple Watch extension.
+
+## Tips to integrate a Flutter + Apple Watch project with Fastlane
+
+**Tip 1:** Update each target settings to do the manually signing
+```ruby
+def update_code_signing(team_id)
+  update_code_signing_settings(
+    use_automatic_signing: false,
+    targets: "Runner",
+    team_id: team_id,
+    bundle_identifier: "io.ckl.pocwatch",
+    profile_name: "POC Flutter Apple Watch",
+  )
+
+  update_code_signing_settings(
+    use_automatic_signing: false,
+    targets: "watch",
+    team_id: team_id,
+    bundle_identifier: "io.ckl.pocwatch.watchkitapp",
+    profile_name: "POC Flutter Apple Watch - Watchkit",
+  )
+
+  update_code_signing_settings(
+    use_automatic_signing: false,
+    targets: "watch WatchKit Extension",
+    team_id: team_id,
+    bundle_identifier: "io.ckl.pocwatch.watchkitapp.watchkitextension",
+    profile_name: "POC Flutter Apple Watch - Watchkit Extension",
+  )
+end
+```
+**Tip 2**: To create the Match certificate and Provisioning Profiles use the following command: 
+```shell
+fastlane match appstore -a io.ckl.pocwatch,io.ckl.pocwatch.watchkitapp,io.ckl.pocwatch.watchkitapp.watchkitextension
+```
+and update your **Fastfile** as the following:
+```ruby
+match(app_identifier: ["io.ckl.pocwatch", "io.ckl.pocwatch.watchkitapp", "io.ckl.pocwatch.watchkitapp.watchkitextension"])
+```
+
+**Tip 3:** You just need to build the **Runner** target
+```ruby
+  build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      export_method: "enterprise",
+      export_team_id: team_id
+  )
+```
 ## References
 
 - [WCSession](https://developer.apple.com/documentation/watchconnectivity/wcsession#//apple_ref/doc/uid/TP40015237-CH1-SW16)
