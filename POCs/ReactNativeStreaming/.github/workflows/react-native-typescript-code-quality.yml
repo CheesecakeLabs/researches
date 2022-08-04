@@ -1,0 +1,30 @@
+name: "react-native-typescript Code Quality Check"
+on:
+  pull_request:
+    types:
+      - synchronize
+      - opened
+
+jobs:
+  test:
+    name: 'Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: make test
+  eslint:
+    name: "Eslint"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - uses: reviewdog/action-eslint@v1
+        with:
+          level: "info"
