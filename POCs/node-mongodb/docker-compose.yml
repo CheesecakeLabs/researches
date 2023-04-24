@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  nodejs:
+    container_name: nodejs
+    build:
+      context: ./
+    environment:
+      - NODE_ENV=development
+      - PORT=8000
+      - DEBUG=true
+      - PRIVATE_KEY="example-key"
+      - SOCKET_TIMEOUT=2000
+      - SENTRY_DSN="sentry-url"
+    volumes:
+      - './:/usr/src/app'
+    ports:
+      - 8000:8000
+      - 9229:9229
+    depends_on:
+      - db
+  db:
+    image: mongo:5.0
+    volumes:
+      - db_data:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: digitalHealth
+
+volumes:
+  db_data:
+    name: nodejs-typescript-db-data
