@@ -2,15 +2,14 @@ import superTest from 'supertest'
 
 import { Consult } from 'api/core/entities/consult'
 import { Patient } from 'api/core/entities/patient'
-import { messages } from 'api/digital-health/v1/use-cases/consult/constants'
-import { prefix } from 'api/digital-health/v1/use-cases/consult/routes'
+import { messages } from 'api/digital-health/constants'
 import server from 'app'
 
-import { Doctor } from '../../../../../core/entities/doctor'
+import { Doctor } from '../../../core/entities/doctor'
 
 describe('Get consult count', () => {
   function makeRequest(): superTest.Test {
-    return superTest(server.http).get(`${prefix}/count`).send()
+    return superTest(server.http).get(`/consult/count`).send()
   }
 
   it('can get consult count when there is no consult', async () => {

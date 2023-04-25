@@ -123,9 +123,4 @@ docker-stop:
 docker-build:
 	docker-compose up --build
 
-# Commands
-
-seed:
-	NODE_ENV=$(ENV) node -r ts-node/register -r tsconfig-paths/register src/interfaces/cli/index.ts TEMP_SEED
-
 default: help

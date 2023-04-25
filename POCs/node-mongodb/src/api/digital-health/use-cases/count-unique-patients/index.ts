@@ -1,14 +1,14 @@
 import { Request, Response } from 'express'
 
-import { Person } from 'api/core/entities/person'
+import { Consult } from 'api/core/entities/consult'
 import { UseCaseBase } from 'api/core/framework/use-case'
 import { IUseCaseHttp } from 'api/core/framework/use-case/http'
 import { HttpStatusCodes } from 'api/core/utils/http/status-code'
+import { messages } from 'api/digital-health/constants'
 
 import { CountPeopleResponse } from './types'
-import { messages } from '../constants'
 
-export class CountPeopleUseCase extends UseCaseBase implements IUseCaseHttp<CountPeopleResponse> {
+export class CountUniquePatientsUseCase extends UseCaseBase implements IUseCaseHttp<CountPeopleResponse> {
   executeHttp = async (
     _request: Request,
     response: Response<CountPeopleResponse>
@@ -18,12 +18,12 @@ export class CountPeopleUseCase extends UseCaseBase implements IUseCaseHttp<Coun
   }
 
   async handle(): Promise<CountPeopleResponse> {
-    const response = await Person.count()
+    const count = await Consult.getUniquePatientsCount()
     return {
       data: {
-        count: response,
+        count,
       },
-      message: messages.PEOPLE_COUNT_SUCCESS,
+      message: messages.UNIQUE_PATIENT_COUNT_SUCCESS,
     }
   }
 }

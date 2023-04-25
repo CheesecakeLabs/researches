@@ -1,7 +1,11 @@
-import ConsultDocs from './v1/use-cases/consult/index.docs'
-import PersonDocs from './v1/use-cases/person/index.docs'
+import CountConsultsDocs from './use-cases/count-consults/index.docs'
+import CountUniquePatientsDocs from './use-cases/count-unique-patients/index.docs'
 
 export default {
-  ...ConsultDocs,
-  ...PersonDocs,
+  '/consult/count': {
+    ...CountConsultsDocs,
+  },
+  'consults/unique-patients-count': {
+    ...CountUniquePatientsDocs,
+  },
 }

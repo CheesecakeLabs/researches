@@ -6,7 +6,7 @@ import { CountPeopleResponse } from './types'
 
 export default {
   get: {
-    summary: 'Count people',
+    summary: 'Count unique patients',
     tags: [DIGITAL_HEALTH_TAG],
     responses: {
       [HttpStatusCodes.OK]: {

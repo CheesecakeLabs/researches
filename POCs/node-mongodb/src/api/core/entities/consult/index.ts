@@ -1,16 +1,36 @@
-import { Schema, Types, model } from 'mongoose'
+import { Model, Schema, Types, model } from 'mongoose'
 
 import { IDoctor } from '../doctor'
 import { IPatient } from '../patient'
 
-export interface IConsult {
+export interface IConsultFields {
   doctor: IDoctor
   patient: IPatient
 }
 
-const consultSchema = new Schema<IConsult>({
+interface IConsultStatics extends Model<IConsultFields> {
+  getUniquePatientsCount(): Promise<number>
+}
+
+const consultSchema = new Schema<IConsultFields, IConsultStatics>({
   doctor: { type: Types.ObjectId, ref: 'Doctor' },
   patient: { type: Types.ObjectId, ref: 'Patient' },
 })
 
-export const Consult = model<IConsult>('Consult', consultSchema)
+consultSchema.static('getUniquePatientsCount', async function myStaticMethod(): Promise<number> {
+  /**
+   * Todo: Check if (await Consult.distinct('patient')).length is equally performatic
+   */
+  return (
+    (
+      await this.aggregate([
+        { $group: { _id: null, count: { $addToSet: '$patient' } } },
+        { $project: { count: 1 } },
+        { $unwind: '$count' },
+        { $count: 'count' },
+      ])
+    )[0]?.count ?? 0
+  )
+})
+
+export const Consult = model<IConsultFields, IConsultStatics>('Consult', consultSchema)

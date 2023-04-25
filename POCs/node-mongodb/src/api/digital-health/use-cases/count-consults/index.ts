@@ -4,9 +4,9 @@ import { Consult } from 'api/core/entities/consult'
 import { UseCaseBase } from 'api/core/framework/use-case'
 import { IUseCaseHttp } from 'api/core/framework/use-case/http'
 import { HttpStatusCodes } from 'api/core/utils/http/status-code'
+import { messages } from 'api/digital-health/constants'
 
 import { CountConsultsResponse } from './types'
-import { messages } from '../constants'
 
 export class CountConsultsUseCase extends UseCaseBase implements IUseCaseHttp<CountConsultsResponse> {
   executeHttp = async (
