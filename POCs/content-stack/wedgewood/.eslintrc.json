@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "sznm/react",
+    "plugin:react/jsx-runtime",
+    "plugin:@next/next/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-console": "off",
+    "no-underscore-dangle": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/no-array-index-key": "off"
+  }
+}
