@@ -6,6 +6,8 @@ import {
 
 import type { AnimalImage } from '~/lib/types/pages';
 
+import styles from './styles.module.scss';
+
 interface HeroSectionProps {
   backgroundImage: string;
   rightbackgroundImage: string;
@@ -13,6 +15,7 @@ interface HeroSectionProps {
   boldTitle: string;
   description: string;
   animalImages: AnimalImage[];
+  singlePromoImage?: string;
 }
 
 function HeroSection({
@@ -22,6 +25,7 @@ function HeroSection({
   boldTitle,
   description,
   normalTitle,
+  singlePromoImage,
 }: HeroSectionProps) {
   const imagesPositions = [
     { justifyContent: 'center', alignItems: 'center', marginTop: 32 }, // centro
@@ -30,10 +34,11 @@ function HeroSection({
     { bottom: 0, left: 0 }, // baixo-esquerda
     { bottom: 0, right: 0, marginBottom: 20 }, // baixo-direita
   ];
+
   return (
     <Box
       flex={1}
-      h="100vh"
+      h="60vh"
       position="relative"
       bgImage={backgroundImage}
       bgSize="cover"
@@ -48,8 +53,8 @@ function HeroSection({
           display: 'flex',
           gridTemplateColumns: 'auto auto auto auto auto',
         }}
-        globalFactorX={0.3}
-        globalFactorY={0.3}
+        globalFactorX={0}
+        globalFactorY={0}
         resetOnLeave
       >
         <Flex
@@ -59,28 +64,37 @@ function HeroSection({
           align="flex-start"
           pl={12}
           h="100%"
+          className={styles.heroSectionText}
         >
-          <Text fontSize="4xl" fontWeight="semibold" color="gray.700">
+          <Text fontWeight="semibold" color="gray.700" className={styles.normalTitle}>
             {normalTitle}
           </Text>
-          <Text fontSize="4xl" fontWeight="extrabold" color="gray.700">
+          <Text fontWeight="extrabold" color="gray.700" className={styles.boldTitle}>
             {boldTitle}
           </Text>
-          <Text fontSize="xl" color="gray.600" mt={4}>
+          <Text fontSize="xl" color="gray.600" mt={4} className={styles.description}>
             {description}
           </Text>
         </Flex>
 
         <Flex
           flex={1}
-          h="100vh"
-          direction="column"
+          h="60vh"
+          direction={singlePromoImage ? "row" : "column"}
           position="relative"
           overflow="hidden"
-          justify="center"
+          justify={singlePromoImage ? "end" : "center"}
           align="center"
         >
-          <MouseParallaxChild
+
+        {singlePromoImage && (
+          <Image src={singlePromoImage} className={styles.heroImage}></Image>
+        )}
+          
+
+        {!singlePromoImage && (
+          <>
+            <MouseParallaxChild
             factorX={0.1}
             factorY={0.1}
             style={{
@@ -133,6 +147,9 @@ function HeroSection({
               </MouseParallaxChild>
             ))}
           </Box>
+          </>
+        )}
+
         </Flex>
       </MouseParallaxContainer>
     </Box>

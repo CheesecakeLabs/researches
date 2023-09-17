@@ -1,0 +1,80 @@
+.animalHealthSection{
+
+    font-weight: 500;
+
+    p {
+        span {
+            font-weight: 400;
+            font-size: 32px;
+        }
+    }
+
+    .subtitle {
+        padding-top: 24px;
+        font-size: 1.2rem;
+    }
+
+    .animalPillHolder {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .animalPill {
+            padding: 24px;
+            background-color: #fff;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background-color 0.2s ease-in-out;
+            min-width: 300px;
+            max-width: 340px;
+            cursor: pointer;
+            height: 100%;
+            
+            &:hover {
+                background-color: #1C705E;
+                color: #fff !important;
+
+                img {
+                    filter: grayscale(0%);
+                    filter: brightness(1.5);
+                }
+
+                .animalPillButton {
+                    span {
+                        padding-right: 20px;
+                        color: #fff;
+                    }
+
+                    svg {                        
+                        color: #fff !important;
+                    }
+                }
+            }
+
+            img {
+                filter: grayscale(100%);
+            }
+
+            .animalPillHeading {
+                font-size: 24px;
+            }
+
+            .animalPillText {
+                font-size: 1.1rem;
+            }
+
+            .animalPillButton {
+                span {
+                    padding-right: 8px;
+                    transition: padding-right 0.2s ease-in-out;
+                    font-size: 1.2rem;
+                    color: #1C705E;
+                }
+            }
+        }
+    }
+
+}

@@ -1,10 +1,12 @@
 import { Box, Flex, Text, Link } from '@chakra-ui/react';
 
+import styles from './styles.module.scss';
+
 interface FooterProps {}
 
 function Footer({}: FooterProps) {
   return (
-    <Box as="footer" background="#532F45" color="white" padding={10}>
+    <Box as="footer" background="#532F45" color="white" padding={10} className={styles.footer}>
       <Flex
         direction={['column', 'row']}
         justify="space-between"

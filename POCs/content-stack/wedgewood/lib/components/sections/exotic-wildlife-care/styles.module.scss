@@ -1,0 +1,33 @@
+.wildlife {
+
+    .sectionTitle {
+        p {
+            font-weight: 400;
+            font-size: 32px;
+            padding: 32px 0;
+        }
+    }
+
+    .sectionDescription {
+        p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #777;
+        }
+
+        padding-bottom: 32px;
+    }
+
+    .itemHolder {
+        margin-bottom: 32px;
+        
+        .item {
+            font-weight: 500;
+            font-size: 1.2rem;
+
+            .icon {
+                color: #1C705E;
+            }
+        }
+    }
+}

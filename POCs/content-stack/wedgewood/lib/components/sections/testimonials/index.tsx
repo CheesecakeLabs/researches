@@ -1,5 +1,7 @@
 import { Box, Image, Text, VStack, Flex } from '@chakra-ui/react';
 
+import styles from './styles.module.scss';
+
 import RichTextRenderer from '../../rich-text-renderer';
 import type { Testimonials as DataType, Testimony } from '~/lib/types/pages';
 
@@ -26,68 +28,56 @@ const TestimonialCard = ({
   return (
     <Box
       as="article"
-      w="515px"
-      h="460px"
+      w="540px"
+      h="520px"
       boxShadow="lg"
       bgColor="#F3F4F4"
       p={5}
       mb={6}
       borderRadius="md"
       flexShrink={0}
+      className={styles.testimonialCard}
     >
-      <Flex flexDirection="column">
-        <Flex>
+      <div>
+        <div className={styles.testimonialCardHeader}>
           <Image
             boxSize="60px"
             borderRadius="full"
             src={authorImage}
             alt={authorName}
+            className={styles.testimonialCardImage}
           />
-          <VStack alignItems="start" spacing="1">
-            <Text fontWeight="bold">{authorName}</Text>
-            <Text fontSize="sm">{authorDescription}</Text>
+          <VStack alignItems="start" spacing="1" className={styles.testimonialCardTitleHolder}>
+            <Text fontWeight="bold" className={styles.testimonialCardTitleName}>{authorName}</Text>
+            <Text fontSize="sm" className={styles.testimonialCardTitleDesc}>{authorDescription}</Text>
           </VStack>
-        </Flex>
 
-        <Flex flex={1} flexDir="column">
+          </div>
           <RichTextRenderer data={testimony} />
-        </Flex>
+      </div>
 
-        <Flex justifyContent="space-between" alignItems="center">
+        <div className={styles.testimonialCardFooter}>
           <Image src="/quote.svg" w="27px" h="24px" alt="Quote" />
-          <Text fontSize="sm">{location}</Text>
-        </Flex>
-      </Flex>
+          <Text fontSize="sm" className={styles.testimonialCardFooterText}>{location}</Text>
+        </div>
     </Box>
   );
 };
 
 function Testimonials({ data }: TestimonialsProps) {
   return (
-    <Box backgroundColor="white" textColor="blackAlpha.800">
+    <Box backgroundColor="white" textColor="blackAlpha.800" className={styles.testimonialsSection}>
       <VStack align="start">
-        <Box px={10}>
+        <Box px={10} className={styles.testimonialsSectionTitle}>
           <RichTextRenderer data={data.section_title} />
-          <Text textAlign="left">{data.section_description}</Text>
+          <Text textAlign="left"  className={styles.testimonialsSectionDescription}>{data.section_description}</Text>
         </Box>
         <Flex
           w="full"
           gap={6}
           px={10}
           overflowX="auto"
-          css={{
-            '&::-webkit-scrollbar': {
-              width: '4px',
-              height: '10px',
-            },
-            '&::-webkit-scrollbar-track': {
-              width: '6px',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              background: '#4b2a3e',
-              borderRadius: '4px',
-            },
-          }}
+          className={styles.testimonialsSectionHolder}
         >
           {[...data.testimonial_card, ...data.testimonial_card].map(
             (testimonial, idx) => (

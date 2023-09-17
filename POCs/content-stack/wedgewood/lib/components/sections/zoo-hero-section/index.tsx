@@ -3,11 +3,14 @@ import { Box, Button, Flex, Image, Text } from '@chakra-ui/react';
 import RichTextRenderer from '../../rich-text-renderer';
 import type { ZooHeroSection as DataType } from '~/lib/types/pages';
 
+import styles from './styles.module.scss';
+
 interface ZooHeroSectionProps {
   data: DataType;
 }
 
 function ZooHeroSection({ data }: ZooHeroSectionProps) {
+  console.log(data);
   return (
     <Flex
       flexDirection="row"
@@ -26,44 +29,25 @@ function ZooHeroSection({ data }: ZooHeroSectionProps) {
         />
       </Box>
       <Box
-        flex={1}
-        p={6}
-        backgroundColor="#EFECDA"
-        display="flex"
-        textColor="black"
-        flexDirection="column"
-        justifyContent="center"
-      >
-        <Box
-          flex={1}
-          display="flex"
-          marginY={12}
-          flexDirection="column"
-          justifyContent="space-evenly"
-        >
-          <Box fontSize="2xl">
-            <RichTextRenderer data={data.title} />
-          </Box>
-          <Box
-            display="flex"
-            flexDirection="column"
-            flex={1}
-            alignItems="flex-start"
-          >
-            <Text>{data.description}</Text>
-            <Text>{data.subdescription}</Text>
-          </Box>
+        className={styles.heroContent}
+      >          
+        <RichTextRenderer data={data.title} />
 
+        <Text className={styles.contentDesc}>{data.description}</Text>
+        <Text className={styles.contentSub}>{data.subdescription}</Text>
+
+        <a href={data.button_cta.href}>
           <Button
             textColor="white"
             alignSelf="flex-end"
             size="lg"
             rounded="md"
             colorScheme="wine"
+            className={styles.ctaButton}
           >
             {data.button_cta.title}
           </Button>
-        </Box>
+        </a>
       </Box>
     </Flex>
   );

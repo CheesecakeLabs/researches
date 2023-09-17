@@ -1,5 +1,7 @@
 import { Box, Button, Center, Text } from '@chakra-ui/react';
 
+import styles from './styles.module.scss';
+
 import RichTextRenderer from '../../rich-text-renderer';
 import type { LoginSection as DataType } from '~/lib/types/pages';
 
@@ -10,7 +12,7 @@ interface LoginSectionProps {
 function LoginSection({ data }: LoginSectionProps) {
   return (
     <Box
-      h="400px"
+      h="320px"
       w="100%"
       textColor="blackAlpha.800"
       bgImage={`url("${data.background_image.url}")`}
@@ -20,9 +22,9 @@ function LoginSection({ data }: LoginSectionProps) {
       bgRepeat="no-repeat"
     >
       <Center h="100%">
-        <Box textAlign="center">
+        <Box textAlign="center" className={styles.loginSection}>
           <RichTextRenderer data={data.title} />
-          <Text fontSize="xl" mb="8" {...data.$.description}>
+          <Text fontSize="xl" mb="8" {...data.$.description} className={styles.loginSectionDescription}>
             {data.description}
           </Text>
           <Button
@@ -30,6 +32,7 @@ function LoginSection({ data }: LoginSectionProps) {
             colorScheme="wine"
             textColor="white"
             variant="solid"
+            className={styles.loginSectionButton}
           >
             Log In As Practice
           </Button>

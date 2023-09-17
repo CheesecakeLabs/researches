@@ -1,0 +1,60 @@
+.librarySection {
+    .sectionTitle {
+        margin-bottom: 24px;
+        p {
+            font-weight: 400;
+            font-size: 32px;
+        }
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+
+    .holder {
+        margin-top: 52px;
+
+        .libraryItem {
+            border-radius: 16px;
+            max-width: 49%;
+            display: flex;
+            padding: 16px;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #532F45;
+
+                .libraryText {
+                    color: #fff;
+                }
+
+                .animalPillButton {
+                    color: #fff;
+                    gap: 32px;
+                }
+            }
+
+            .libraryImage {
+                margin: 0;
+            }
+
+            .libraryText {
+                width: 100%;
+                font-weight: 500;
+            }
+
+            .animalPillButton {
+                font-weight: 500;
+                color: #1C705E;
+                font-size: 1.1rem;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+                transition: gap 0.2s ease-in-out;
+            }
+        }
+    }
+}

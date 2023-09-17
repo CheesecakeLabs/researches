@@ -1,0 +1,25 @@
+.loginSection {
+
+    font-weight: 500;
+
+    p {
+        span {
+            font-weight: 400;
+            font-size: 32px;
+            margin-bottom: 32px;
+        }
+    }
+
+    .loginSectionDescription {
+        padding-top: 26px;
+        padding-bottom: 18px;
+    }
+
+    .loginSectionButton {
+        font-weight: 500;
+
+        &:hover {
+            background-color: #793B5F;
+        }
+    }
+}

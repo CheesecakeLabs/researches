@@ -3,11 +3,14 @@ import { Box, Flex, Button, Image } from '@chakra-ui/react';
 import RichTextRenderer from '../../rich-text-renderer';
 import type { LearnMoreBanner as DataType } from '~/lib/types/pages';
 
+import styles from './styles.module.scss';
+
 interface LearnMoreBannerProps {
   data: DataType;
 }
 
 function LearnMoreBanner({ data }: LearnMoreBannerProps) {
+  console.log(data);
   return (
     <Flex flex={1} backgroundColor="white" py={20}>
       <Flex
@@ -35,32 +38,28 @@ function LearnMoreBanner({ data }: LearnMoreBannerProps) {
           display="flex"
           flexDirection="column"
           justifyContent="center"
+          className={styles.learnMoreSection}
         >
-          <Box
-            flex={1}
-            display="flex"
-            marginY={12}
-            flexDirection="column"
-            justifyContent="space-evenly"
-          >
-            <Box fontSize="2xl">
+            <Box fontSize="2xl" className={styles.title}>
               <RichTextRenderer data={data.section_title} />
             </Box>
-            <Box display="flex" flex={1} alignItems="center">
+            <Box display="flex" flex={1} alignItems="center" className={styles.description}>
               <RichTextRenderer data={data.section_description} />
             </Box>
 
-            <Button
-              textColor="white"
-              alignSelf="flex-end"
-              size="md"
-              rounded="md"
-              colorScheme="whiteAlpha"
-            >
-              {data.button_cta.title}
-            </Button>
+            <a href={data.button_cta.href}>
+              <Button
+                textColor="white"
+                alignSelf="flex-end"
+                size="md"
+                rounded="md"
+                colorScheme="whiteAlpha"
+                className={styles.ctaButton}
+              >
+                {data.button_cta.title}
+              </Button>
+            </a>
           </Box>
-        </Box>
       </Flex>
     </Flex>
   );

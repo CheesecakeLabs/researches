@@ -25,6 +25,7 @@ function RenderComponents({ pageComponents }: RenderComponentsProps) {
     <Box display="flex" flexDir="column" flex={1}>
       {pageComponents?.map((components, i) => {
         if (components.hero_section) {
+          console.log(components.hero_section);
           return (
             <HeroSection
               key="hero-section"
@@ -36,6 +37,7 @@ function RenderComponents({ pageComponents }: RenderComponentsProps) {
               boldTitle={components.hero_section.bold_title}
               description={components.hero_section.description}
               normalTitle={components.hero_section.normal_title}
+              singlePromoImage={components.hero_section.single_promo_image?.url}
             />
           );
         }

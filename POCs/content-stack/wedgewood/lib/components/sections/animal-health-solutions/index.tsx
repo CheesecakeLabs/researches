@@ -11,45 +11,52 @@ import {
 import RichTextRenderer from '../../rich-text-renderer';
 import type { AnimalHealthSolutions as DataType } from '~/lib/types/pages';
 
+import styles from './styles.module.scss';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+
 interface AnimalHealthSolutionsProps {
   data: DataType;
 }
 
-const Item = ({ iconSrc, title, description }) => (
-  <Box textAlign="left" mb="4">
-    <Image src={iconSrc} boxSize="30px" mb="4" alt={title} />
-    <Heading size="md" mb="2">
-      {title}
-    </Heading>
-    <Text mb="4">{description}</Text>
-    <Button
-      rightIcon={<Icon name="arrow" />}
-      variant="outline"
-      colorScheme="blue"
-    >
-      Learn more
-    </Button>
-  </Box>
+const Item = ({ iconSrc, title, description, targetUrl }) => (
+  <a href={targetUrl}>
+    <Box textAlign="left" mb="4" className={styles.animalPill}>
+      <div>
+        <Image src={iconSrc} width={'60px'} mb="4" alt={title} />
+        <Heading size="md" mb="2" className={styles.animalPillHeading}>
+          {title}
+        </Heading>
+        <Text mb="4" className={styles.animalPillText}>{description}</Text>
+      </div>
+      <div
+        className={styles.animalPillButton}
+      >
+        <span>Learn more</span>
+        <ArrowForwardIcon color={"#1C705E"}/>
+      </div>
+    </Box>
+  </a>
 );
 
 function AnimalHealthSolutions({ data }: AnimalHealthSolutionsProps) {
   return (
-    <Box flex={1} p={12} backgroundColor="white" color="black">
-      <RichTextRenderer data={data.section_title} />
-      <Text fontSize="xl" mb="8">
+    <Box flex={1} p={12} backgroundColor="white" color="black" className={styles.animalHealthSection}>
+      <RichTextRenderer data={data.section_title}/>
+      <Text fontSize="xl" mb="8" className={styles.subtitle}>
         {data.section_description}
       </Text>
 
-      <SimpleGrid columns={4} spacing={10}>
+      <div className={styles.animalPillHolder}>
         {data.learn_more.map((item, index) => (
           <Item
             key={index}
             description={item.description}
             iconSrc={item.section_image.url}
             title={item.title}
+            targetUrl={item.link.href}
           />
         ))}
-      </SimpleGrid>
+      </div>
     </Box>
   );
 }

@@ -6,11 +6,12 @@ import Header from '../components/header';
 
 type LayoutProps = {
   children: ReactNode;
+  className?: string;
 };
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, className }: LayoutProps) => {
   return (
-    <Box margin="0 auto" transition="0.5s ease-out">
+    <Box margin="0 auto" transition="0.5s ease-out" className={className}>
       <Box>
         <Header />
         <Box as="main">{children}</Box>
