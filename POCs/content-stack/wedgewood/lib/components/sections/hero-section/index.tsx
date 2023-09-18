@@ -38,7 +38,7 @@ function HeroSection({
   return (
     <Box
       flex={1}
-      h="60vh"
+      h="80vh"
       position="relative"
       bgImage={backgroundImage}
       bgSize="cover"
@@ -79,7 +79,7 @@ function HeroSection({
 
         <Flex
           flex={1}
-          h="60vh"
+          h="80vh"
           direction={singlePromoImage ? "row" : "column"}
           position="relative"
           overflow="hidden"

@@ -15,7 +15,7 @@ interface LearnMoreCardProps {
 
 const Card = ({ data }: LearnMoreCardProps) => (
   <div className={styles.libraryItem}>
-    <Image src={data.image.url} w="280px" h="232px" className={styles.libraryImage}/>
+    <Image src={data.image.url}  className={styles.libraryImage}/>
     <Box
       display="flex"
       flexDirection="column"

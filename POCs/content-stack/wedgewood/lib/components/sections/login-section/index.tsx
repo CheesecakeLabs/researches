@@ -27,15 +27,17 @@ function LoginSection({ data }: LoginSectionProps) {
           <Text fontSize="xl" mb="8" {...data.$.description} className={styles.loginSectionDescription}>
             {data.description}
           </Text>
-          <Button
-            borderRadius={4}
-            colorScheme="wine"
-            textColor="white"
-            variant="solid"
-            className={styles.loginSectionButton}
-          >
-            Log In As Practice
-          </Button>
+          <a href={data.external_link.href}>
+            <Button
+              borderRadius={4}
+              colorScheme="wine"
+              textColor="white"
+              variant="solid"
+              className={styles.loginSectionButton}
+            >
+              {data.external_link.title}
+            </Button>
+          </a>  
         </Box>
       </Center>
     </Box>
