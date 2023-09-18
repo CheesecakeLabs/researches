@@ -1,12 +1,34 @@
 import { Box, Flex, Text, Link } from '@chakra-ui/react';
+import type { FC } from 'react';
+
+import RichTextRenderer from '../rich-text-renderer';
 
 import styles from './styles.module.scss';
 
-interface FooterProps {}
+import type { FooterProps as DataType } from '~/lib/types/layout';
 
-function Footer({}: FooterProps) {
+interface FooterProps {
+  data: DataType;
+}
+
+const RemoveHTMLTags: FC<{ htmlString: string }> = ({ htmlString }) => {
+  const extractText = (html: string): string => {
+    const dom = new DOMParser().parseFromString(html, 'text/html');
+    return dom.body.textContent || '';
+  };
+
+  return <div>{extractText(htmlString)}</div>;
+};
+
+function Footer({ data }: FooterProps) {
   return (
-    <Box as="footer" background="#532F45" color="white" padding={10} className={styles.footer}>
+    <Box
+      as="footer"
+      background="#532F45"
+      color="white"
+      padding={10}
+      className={styles.footer}
+    >
       <Flex
         direction={['column', 'row']}
         justify="space-between"
@@ -15,29 +37,19 @@ function Footer({}: FooterProps) {
         marginBottom={8}
       >
         <Flex gap={8} direction={['column', 'row']}>
-          <Link href="/terms">TERMS OF USE</Link>
-          <Link href="/privacy">PRIVACY POLICY</Link>
-          <Link href="/site-map">SITE MAP</Link>
+          {data.navigation.link.map((link) => (
+            <Link href={link.href}>{link.title?.toUpperCase()}</Link>
+          ))}
         </Flex>
 
         <Box mt={[4, 0]}>
-          <Text>©️ 2004-2023 Wedgewood Pharmacy, all rights reserved.</Text>
-          <Text>405 heron drive suite 200 | Swedesboro, NJ 08085-1749</Text>
+          <RemoveHTMLTags htmlString={data.copyright} />
+          <RichTextRenderer data={data.company_address} />
         </Box>
       </Flex>
 
       <Text mt={4}>
-        This content is intended for counseling purposes only. This content is
-        informational/educational and is not intended to treat or diagnose any
-        disease or patient. No claims are made as to the safety or efficacy of
-        mentioned preparations. The compounded medications featured in this
-        content have been prescribed and/or administered by prescribers who work
-        with Wedgewood Pharmacy. You are encouraged to speak with your
-        prescriber as to the appropriate use of any medication. Wedgewood
-        Pharmacy’s compounded veterinary preparations are not intended for use
-        in food and food-producing animals. All product and company names are
-        trademarks™ or registered® trademarks of their respective holders. Use
-        of them does not imply any affiliation with or endorsement by them.
+        <RichTextRenderer data={data.footer_text} />
       </Text>
     </Box>
   );
