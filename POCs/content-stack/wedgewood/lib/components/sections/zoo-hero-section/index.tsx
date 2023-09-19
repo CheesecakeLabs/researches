@@ -1,9 +1,10 @@
 import { Box, Button, Flex, Image, Text } from '@chakra-ui/react';
 
 import RichTextRenderer from '../../rich-text-renderer';
-import type { ZooHeroSection as DataType } from '~/lib/types/pages';
 
 import styles from './styles.module.scss';
+
+import type { ZooHeroSection as DataType } from '~/lib/types/pages';
 
 interface ZooHeroSectionProps {
   data: DataType;
@@ -28,9 +29,7 @@ function ZooHeroSection({ data }: ZooHeroSectionProps) {
           w="100%"
         />
       </Box>
-      <Box
-        className={styles.heroContent}
-      >          
+      <Box className={styles.heroContent}>
         <RichTextRenderer data={data.title} />
 
         <Text className={styles.contentDesc}>{data.description}</Text>

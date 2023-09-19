@@ -116,6 +116,7 @@ export interface HeroSection {
   background_image: BackgroundImage;
   normal_title: string;
   bold_title: string;
+  single_promo_image?: BackgroundImage;
   description: string;
   animal_images: AnimalImage[];
   $: GeneratedType19;
@@ -143,6 +144,7 @@ export interface LoginSection {
   title: Title7;
   _metadata: Metadata5;
   description: string;
+  external_link: Link;
   page_reference: any[];
   background_image: BackgroundImage2;
   $: GeneratedType55;
@@ -158,6 +160,9 @@ export interface Testimonials {
 
 export interface WildGrowth {
   section_description: SectionDescription3;
+  promoimage: BackgroundImage;
+  first_paragraph: string;
+  second_paragraph: string;
   _metadata: Metadata8;
   section_title: SectionTitle3;
   link: Link2;

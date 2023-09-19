@@ -1,8 +1,9 @@
 import { Box, Button, Center, Text } from '@chakra-ui/react';
 
+import RichTextRenderer from '../../rich-text-renderer';
+
 import styles from './styles.module.scss';
 
-import RichTextRenderer from '../../rich-text-renderer';
 import type { LoginSection as DataType } from '~/lib/types/pages';
 
 interface LoginSectionProps {
@@ -24,8 +25,8 @@ function LoginSection({ data }: LoginSectionProps) {
       <Center h="100%">
         <Box textAlign="center" className={styles.loginSection}>
           <RichTextRenderer data={data.title} />
-          <Text fontSize="xl" mb="8" {...data.$.description} className={styles.loginSectionDescription}>
-            {data.description}
+          <Text fontSize="xl" mb="8" className={styles.loginSectionDescription}>
+            {data?.description}
           </Text>
           <a href={data.external_link.href}>
             <Button
@@ -37,7 +38,7 @@ function LoginSection({ data }: LoginSectionProps) {
             >
               {data.external_link.title}
             </Button>
-          </a>  
+          </a>
         </Box>
       </Center>
     </Box>

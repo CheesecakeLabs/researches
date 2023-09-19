@@ -1,9 +1,10 @@
-import { Box, Flex, Image, Text } from '@chakra-ui/react';
+import { Box, Image, Text } from '@chakra-ui/react';
 
-import type { Formulations as DataType, Formulation } from '~/lib/types/pages';
 import RichTextRenderer from '../../rich-text-renderer';
 
 import styles from './styles.module.scss';
+
+import type { Formulations as DataType, Formulation } from '~/lib/types/pages';
 
 interface FormulationsProps {
   data: DataType;

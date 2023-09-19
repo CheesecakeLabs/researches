@@ -1,38 +1,37 @@
-import {
-  Box,
-  Icon,
-  Text,
-  Heading,
-  Button,
-  Image,
-  SimpleGrid,
-} from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { Box, Text, Heading, Image } from '@chakra-ui/react';
 
 import RichTextRenderer from '../../rich-text-renderer';
-import type { AnimalHealthSolutions as DataType } from '~/lib/types/pages';
 
 import styles from './styles.module.scss';
-import { ArrowForwardIcon } from '@chakra-ui/icons';
+
+import type { AnimalHealthSolutions as DataType } from '~/lib/types/pages';
 
 interface AnimalHealthSolutionsProps {
   data: DataType;
 }
+interface ItemProps {
+  iconSrc: string;
+  title: string;
+  description: string;
+  targetUrl: string;
+}
 
-const Item = ({ iconSrc, title, description, targetUrl }) => (
+const Item = ({ iconSrc, title, description, targetUrl }: ItemProps) => (
   <a href={targetUrl}>
     <Box textAlign="left" mb="4" className={styles.animalPill}>
       <div>
-        <Image src={iconSrc} width={'60px'} mb="4" alt={title} />
+        <Image src={iconSrc} width="60px" mb="4" alt={title} />
         <Heading size="md" mb="2" className={styles.animalPillHeading}>
           {title}
         </Heading>
-        <Text mb="4" className={styles.animalPillText}>{description}</Text>
+        <Text mb="4" className={styles.animalPillText}>
+          {description}
+        </Text>
       </div>
-      <div
-        className={styles.animalPillButton}
-      >
+      <div className={styles.animalPillButton}>
         <span>Learn more</span>
-        <ArrowForwardIcon color={"#1C705E"}/>
+        <ArrowForwardIcon color="#1C705E" />
       </div>
     </Box>
   </a>
@@ -40,8 +39,14 @@ const Item = ({ iconSrc, title, description, targetUrl }) => (
 
 function AnimalHealthSolutions({ data }: AnimalHealthSolutionsProps) {
   return (
-    <Box flex={1} p={12} backgroundColor="white" color="black" className={styles.animalHealthSection}>
-      <RichTextRenderer data={data.section_title}/>
+    <Box
+      flex={1}
+      p={12}
+      backgroundColor="white"
+      color="black"
+      className={styles.animalHealthSection}
+    >
+      <RichTextRenderer data={data.section_title} />
       <Text fontSize="xl" mb="8" className={styles.subtitle}>
         {data.section_description}
       </Text>

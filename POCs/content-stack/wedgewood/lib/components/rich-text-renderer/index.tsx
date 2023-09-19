@@ -45,6 +45,7 @@ function RichTextRenderer({ data }: RichTextRendererProps) {
 
   return (
     <div>
+      {/* @ts-ignore */}
       {data.children.map((child, idx) => (
         <Fragment key={idx}>
           {renderNode(child as unknown as ElementNode)}

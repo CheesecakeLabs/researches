@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { Box, Skeleton } from '@chakra-ui/react';
 import { useEffect, type ReactNode, useState } from 'react';
 

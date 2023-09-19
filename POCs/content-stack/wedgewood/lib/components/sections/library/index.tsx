@@ -1,10 +1,11 @@
-import { Box, Flex, Icon, Image, Link, Text } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { Box, Flex, Image, Text } from '@chakra-ui/react';
 
 import RichTextRenderer from '../../rich-text-renderer';
-import type { Library as DataType, LearnMoreCard } from '~/lib/types/pages';
 
 import styles from './styles.module.scss';
-import { ArrowForwardIcon } from '@chakra-ui/icons';
+
+import type { Library as DataType, LearnMoreCard } from '~/lib/types/pages';
 
 interface LibraryProps {
   data: DataType;
@@ -15,7 +16,7 @@ interface LearnMoreCardProps {
 
 const Card = ({ data }: LearnMoreCardProps) => (
   <div className={styles.libraryItem}>
-    <Image src={data.image.url}  className={styles.libraryImage}/>
+    <Image src={data.image.url} className={styles.libraryImage} />
     <Box
       display="flex"
       flexDirection="column"
@@ -28,9 +29,7 @@ const Card = ({ data }: LearnMoreCardProps) => (
       <Text fontSize="24px" lineHeight="150%" className={styles.libraryText}>
         {data.title}
       </Text>
-      <div
-        className={styles.animalPillButton}
-      >
+      <div className={styles.animalPillButton}>
         <Text>{data.button_cta.title}</Text>
         <ArrowForwardIcon />
       </div>
@@ -40,7 +39,12 @@ const Card = ({ data }: LearnMoreCardProps) => (
 
 function Library({ data }: LibraryProps) {
   return (
-    <Box backgroundColor="white" textColor="#000" p={12} className={styles.librarySection}>
+    <Box
+      backgroundColor="white"
+      textColor="#000"
+      p={12}
+      className={styles.librarySection}
+    >
       <Box className={styles.sectionTitle}>
         <RichTextRenderer data={data.title} />
       </Box>

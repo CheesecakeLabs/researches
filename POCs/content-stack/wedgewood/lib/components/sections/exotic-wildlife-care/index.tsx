@@ -1,10 +1,11 @@
-import { Box, HStack, Icon, Text } from '@chakra-ui/react';
+import { CheckIcon } from '@chakra-ui/icons';
+import { Box, HStack, Text } from '@chakra-ui/react';
 
 import RichTextRenderer from '../../rich-text-renderer';
-import type { Check, ExoticWildlifeCare as DataType } from '~/lib/types/pages';
 
 import styles from './styles.module.scss';
-import { CheckIcon } from '@chakra-ui/icons';
+
+import type { Check, ExoticWildlifeCare as DataType } from '~/lib/types/pages';
 
 interface ExoticWildlifeCareProps {
   data: DataType;
@@ -26,14 +27,19 @@ const Item = ({ data }: CheckProps) => (
     gap={4}
     className={styles.item}
   >
-    <CheckIcon className={styles.icon}/>
+    <CheckIcon className={styles.icon} />
     <Text>{data.name}</Text>
   </Box>
 );
 
 function ExoticWildlifeCare({ data }: ExoticWildlifeCareProps) {
   return (
-    <Box backgroundColor="white" textColor="black" p={12} className={styles.wildlife}>
+    <Box
+      backgroundColor="white"
+      textColor="black"
+      p={12}
+      className={styles.wildlife}
+    >
       <Box className={styles.sectionTitle}>
         <RichTextRenderer data={data.title} />
       </Box>

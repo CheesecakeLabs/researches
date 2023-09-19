@@ -44,11 +44,14 @@ function Footer({ data }: FooterProps) {
 
         <Box mt={[4, 0]}>
           <RemoveHTMLTags htmlString={data.copyright} />
+
+          {/* @ts-ignore */}
           <RichTextRenderer data={data.company_address} />
         </Box>
       </Flex>
 
       <Text mt={4}>
+        {/* @ts-ignore */}
         <RichTextRenderer data={data.footer_text} />
       </Text>
     </Box>

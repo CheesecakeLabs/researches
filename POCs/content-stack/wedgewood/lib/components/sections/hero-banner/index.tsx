@@ -1,6 +1,7 @@
 import { Box, Button, Center, Text } from '@chakra-ui/react';
 
 import RichTextRenderer from '../../rich-text-renderer';
+
 import type { LoginSection as DataType } from '~/lib/types/pages';
 
 interface LoginSectionProps {

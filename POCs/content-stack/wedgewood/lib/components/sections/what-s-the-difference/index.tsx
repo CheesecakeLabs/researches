@@ -5,14 +5,14 @@ import {
   Flex,
   Heading,
   VStack,
-  HStack,
   Image,
 } from '@chakra-ui/react';
 
-import type { WhatSTheDifference as DataType } from '~/lib/types/pages';
 import RichTextRenderer from '../../rich-text-renderer';
 
 import styles from './styles.module.scss';
+
+import type { WhatSTheDifference as DataType } from '~/lib/types/pages';
 
 interface ItemProps {
   iconSrc?: string;
@@ -35,7 +35,9 @@ const Item = ({ iconSrc, name, description }: ItemProps) => (
     <Box boxSize="50px">
       <Image src={iconSrc} mb="4" alt={name} />
     </Box>
-    <Text fontWeight="bold" className={styles.farmTitle}>{name}</Text>
+    <Text fontWeight="bold" className={styles.farmTitle}>
+      {name}
+    </Text>
     <Box flex={1}>
       <Text className={styles.farmDesc}>{description}</Text>
     </Box>
@@ -56,7 +58,12 @@ function WhatSTheDifference({ data }: WhatSTheDifferenceProps) {
         <Box maxW={300}>
           <RichTextRenderer data={data.section_description} />
         </Box>
-        <Button variant="outline" colorScheme="white" borderRadius="8px" className={styles.ctaButton}>
+        <Button
+          variant="outline"
+          colorScheme="white"
+          borderRadius="8px"
+          className={styles.ctaButton}
+        >
           {data.button_cta.title}
         </Button>
       </VStack>
@@ -64,7 +71,9 @@ function WhatSTheDifference({ data }: WhatSTheDifferenceProps) {
       <VStack align="start" flex="2" className={styles.rightSection}>
         {data.categories.map((group) => (
           <Box key={group._metadata.uid}>
-            <Heading size="md" className={styles.sectionTitle}>{group.title}</Heading>
+            <Heading size="md" className={styles.sectionTitle}>
+              {group.title}
+            </Heading>
             <div className={styles.row}>
               {group.items.map((item) => (
                 <Item

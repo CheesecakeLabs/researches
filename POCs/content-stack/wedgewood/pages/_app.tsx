@@ -1,9 +1,9 @@
 import { ChakraProvider, cookieStorageManager } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
+import localfont from 'next/font/local';
 import type { ReactElement, ReactNode } from 'react';
 import '@contentstack/live-preview-utils/dist/main.css';
-import localfont from 'next/font/local';
 
 import Layout from '~/lib/layout';
 import customTheme from '~/lib/styles/theme';

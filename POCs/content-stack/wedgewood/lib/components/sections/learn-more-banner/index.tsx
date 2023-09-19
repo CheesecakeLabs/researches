@@ -1,9 +1,10 @@
 import { Box, Flex, Button, Image } from '@chakra-ui/react';
 
 import RichTextRenderer from '../../rich-text-renderer';
-import type { LearnMoreBanner as DataType } from '~/lib/types/pages';
 
 import styles from './styles.module.scss';
+
+import type { LearnMoreBanner as DataType } from '~/lib/types/pages';
 
 interface LearnMoreBannerProps {
   data: DataType;
@@ -40,26 +41,31 @@ function LearnMoreBanner({ data }: LearnMoreBannerProps) {
           justifyContent="center"
           className={styles.learnMoreSection}
         >
-            <Box fontSize="2xl" className={styles.title}>
-              <RichTextRenderer data={data.section_title} />
-            </Box>
-            <Box display="flex" flex={1} alignItems="center" className={styles.description}>
-              <RichTextRenderer data={data.section_description} />
-            </Box>
-
-            <a href={data.button_cta.href}>
-              <Button
-                textColor="white"
-                alignSelf="flex-end"
-                size="md"
-                rounded="md"
-                colorScheme="whiteAlpha"
-                className={styles.ctaButton}
-              >
-                {data.button_cta.title}
-              </Button>
-            </a>
+          <Box fontSize="2xl" className={styles.title}>
+            <RichTextRenderer data={data.section_title} />
           </Box>
+          <Box
+            display="flex"
+            flex={1}
+            alignItems="center"
+            className={styles.description}
+          >
+            <RichTextRenderer data={data.section_description} />
+          </Box>
+
+          <a href={data.button_cta.href}>
+            <Button
+              textColor="white"
+              alignSelf="flex-end"
+              size="md"
+              rounded="md"
+              colorScheme="whiteAlpha"
+              className={styles.ctaButton}
+            >
+              {data.button_cta.title}
+            </Button>
+          </a>
+        </Box>
       </Flex>
     </Flex>
   );
