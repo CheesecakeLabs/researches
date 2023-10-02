@@ -1,0 +1,58 @@
+.differenceSection {
+    color: #fff;
+    border-top: solid 24px #EBCD9F;
+    font-weight: 500;
+
+    .leftSection {
+
+        .title {
+            font-weight: 400 !important;
+            margin-bottom: 32px;
+            font-size: 32px;
+        }
+
+        p {
+            span {
+                font-weight: 500;
+                font-size: 1.2rem;
+            }
+        }
+
+        .ctaButton {
+            margin-top: 32px;
+            font-weight: 500;
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+    }
+
+    .rightSection {
+        font-size: 1.2rem;
+        padding-top: 88px;
+
+        .sectionTitle {
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+
+            .pill {
+                padding: 4px;
+                margin-bottom: 24px;
+
+                .farmTitle {
+                    font-weight: 500;
+                    width: 100%;
+                    margin-bottom: 8px;
+                }
+
+                .farmDesc {
+
+                }
+            }
+        }
+    }
+}

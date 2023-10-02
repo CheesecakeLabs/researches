@@ -1,0 +1,39 @@
+.learnMoreSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+        font-weight: 400;
+        font-size: 32px;
+        color: #fff;
+    }
+
+    .description {
+        font-weight: 500;
+        font-size: 1.2rem;
+        color: #fff;
+
+        p {
+            margin: 16px 0;
+        }
+
+    }
+
+    a {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+
+        .ctaButton {
+            background-color: #EFECDA;
+            font-weight: 500;
+            color: #000;
+            padding: 24px 32px;
+            
+            &:hover {
+                background-color: #EBE1A5;
+            }
+        }
+    }
+}

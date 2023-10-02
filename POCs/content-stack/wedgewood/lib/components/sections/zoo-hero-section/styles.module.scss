@@ -1,0 +1,36 @@
+.heroContent {
+    background-color: #EFECDA;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    padding: 78px 64px;
+    max-width: 50%;
+
+    div {
+        p {
+            font-weight: 400;
+            font-size: 60px;
+        }
+    }
+
+    .contentDesc {
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+
+    .contentSub {
+        font-weight: 500;
+        font-size: 1.2rem;
+        color: #777;
+    }
+
+    .ctaButton {
+        font-weight: 500;
+        padding: 28px 36px;
+
+        &:hover {
+            background-color: #793B5F;
+        }
+    }
+}

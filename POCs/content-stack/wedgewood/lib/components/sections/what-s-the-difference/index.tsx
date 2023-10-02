@@ -5,12 +5,14 @@ import {
   Flex,
   Heading,
   VStack,
-  HStack,
   Image,
 } from '@chakra-ui/react';
 
-import type { WhatSTheDifference as DataType } from '~/lib/types/pages';
 import RichTextRenderer from '../../rich-text-renderer';
+
+import styles from './styles.module.scss';
+
+import type { WhatSTheDifference as DataType } from '~/lib/types/pages';
 
 interface ItemProps {
   iconSrc?: string;
@@ -26,16 +28,18 @@ const Item = ({ iconSrc, name, description }: ItemProps) => (
   <Box
     display="flex"
     flexDirection="column"
-    width={200}
     alignItems="flex-start"
     justifyContent="flex-start"
+    className={styles.pill}
   >
     <Box boxSize="50px">
       <Image src={iconSrc} mb="4" alt={name} />
     </Box>
-    <Text fontWeight="bold">{name}</Text>
+    <Text fontWeight="bold" className={styles.farmTitle}>
+      {name}
+    </Text>
     <Box flex={1}>
-      <Text>{description}</Text>
+      <Text className={styles.farmDesc}>{description}</Text>
     </Box>
   </Box>
 );
@@ -47,22 +51,30 @@ function WhatSTheDifference({ data }: WhatSTheDifferenceProps) {
       backgroundColor="#1C705E"
       p={10}
       gap={4}
+      className={styles.differenceSection}
     >
-      <VStack align="start" flex="1">
-        <Heading>{data.section_title}</Heading>
+      <VStack align="start" flex="1" className={styles.leftSection}>
+        <div className={styles.title}>{data.section_title}</div>
         <Box maxW={300}>
           <RichTextRenderer data={data.section_description} />
         </Box>
-        <Button variant="outline" colorScheme="white" borderRadius="8px">
+        <Button
+          variant="outline"
+          colorScheme="white"
+          borderRadius="8px"
+          className={styles.ctaButton}
+        >
           {data.button_cta.title}
         </Button>
       </VStack>
 
-      <VStack align="start" flex="2">
+      <VStack align="start" flex="2" className={styles.rightSection}>
         {data.categories.map((group) => (
-          <Box py={10} key={group._metadata.uid}>
-            <Heading size="md">{group.title}</Heading>
-            <HStack align="start" wrap="wrap">
+          <Box key={group._metadata.uid}>
+            <Heading size="md" className={styles.sectionTitle}>
+              {group.title}
+            </Heading>
+            <div className={styles.row}>
               {group.items.map((item) => (
                 <Item
                   iconSrc={item.icon?.url}
@@ -70,7 +82,7 @@ function WhatSTheDifference({ data }: WhatSTheDifferenceProps) {
                   description={item.description}
                 />
               ))}
-            </HStack>
+            </div>
           </Box>
         ))}
       </VStack>

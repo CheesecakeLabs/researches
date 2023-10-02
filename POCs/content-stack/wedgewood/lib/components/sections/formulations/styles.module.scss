@@ -1,0 +1,14 @@
+.formulationHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 48px;
+
+    .formulationItem {
+
+        .formulationItemText {
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+    }
+}

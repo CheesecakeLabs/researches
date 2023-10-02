@@ -10,7 +10,9 @@
     "no-underscore-dangle": "off",
     "react/jsx-no-useless-fragment": "off",
     "@typescript-eslint/ban-ts-comment": "off",
+    "import/no-extraneous-dependencies": "off",
     "react-hooks/exhaustive-deps": "off",
+    "import/extensions": "off",
     "react/no-array-index-key": "off"
   }
 }

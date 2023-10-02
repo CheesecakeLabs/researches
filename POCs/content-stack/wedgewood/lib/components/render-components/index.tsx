@@ -14,6 +14,7 @@ import {
   WildGrowth,
   ZooHeroSection,
 } from '../sections';
+
 import type { PagesComponent } from '~/lib/types/pages';
 
 interface RenderComponentsProps {
@@ -25,6 +26,7 @@ function RenderComponents({ pageComponents }: RenderComponentsProps) {
     <Box display="flex" flexDir="column" flex={1}>
       {pageComponents?.map((components, i) => {
         if (components.hero_section) {
+          console.log(components.hero_section);
           return (
             <HeroSection
               key="hero-section"
@@ -33,9 +35,12 @@ function RenderComponents({ pageComponents }: RenderComponentsProps) {
               }
               animalImages={components.hero_section.animal_images}
               backgroundImage={components.hero_section.background_image.url}
-              boldTitle={components.hero_section.bold_title}
-              description={components.hero_section.description}
-              normalTitle={components.hero_section.normal_title}
+              boldTitle={components.hero_section?.bold_title}
+              description={components.hero_section?.description}
+              normalTitle={components.hero_section?.normal_title}
+              singlePromoImage={
+                components.hero_section?.single_promo_image?.url
+              }
             />
           );
         }

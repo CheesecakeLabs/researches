@@ -50,7 +50,7 @@ ContentstackLivePreview.init({
     environment: envConfig.CONTENTSTACK_ENVIRONMENT,
   },
   enable: envConfig.CONTENTSTACK_LIVE_PREVIEW === 'true',
-  ssr: true,
+  ssr: false,
 })?.catch((err) => console.error(err));
 
 export const { onEntryChange } = ContentstackLivePreview;

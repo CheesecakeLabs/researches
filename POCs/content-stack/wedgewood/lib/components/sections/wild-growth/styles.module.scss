@@ -1,0 +1,35 @@
+.wildSection {
+    font-weight: 500;
+
+    p {
+        span {
+            font-weight: 400;
+            font-size: 32px;
+        }
+    }
+
+    .firstParagraph {
+        padding-top: 32px;
+        font-size: 1.25rem !important;
+        max-width: 90% !important;
+    }
+
+    .secondParagraph {
+        font-size: 1.25rem !important;
+        max-width: 90% !important;
+        padding-bottom: 32px;
+    }
+
+    .ctaButton {
+        font-weight: 500;
+        padding: 24px 32px;
+
+        &:hover {
+            background-color: #793B5F;
+        }
+    }
+    
+    .promoImage {
+        width: 40%;
+    }
+}

@@ -1,0 +1,22 @@
+.header {
+    font-weight: 500;
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .searchBar {
+        font-weight: 500;
+    }
+
+    .headerBanner {
+        padding: 8px 0;
+        font-weight: 500;
+    }
+
+    .linkIcon {
+        margin-left: 8px;
+    }
+}

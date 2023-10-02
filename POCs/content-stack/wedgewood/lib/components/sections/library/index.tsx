@@ -1,6 +1,10 @@
-import { Box, Flex, Icon, Image, Link, Text } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { Box, Flex, Image, Text } from '@chakra-ui/react';
 
 import RichTextRenderer from '../../rich-text-renderer';
+
+import styles from './styles.module.scss';
+
 import type { Library as DataType, LearnMoreCard } from '~/lib/types/pages';
 
 interface LibraryProps {
@@ -11,42 +15,43 @@ interface LearnMoreCardProps {
 }
 
 const Card = ({ data }: LearnMoreCardProps) => (
-  <Flex flex={1} my={16}>
-    <Image src={data.image.url} alt="teste" w="280px" h="232px" mb={4} />
+  <div className={styles.libraryItem}>
+    <Image src={data.image.url} className={styles.libraryImage} />
     <Box
       display="flex"
       flexDirection="column"
-      justifyContent="space-around"
-      w="40%"
+      justifyContent="space-between"
+      w="100%"
       px={10}
       py={5}
+      className={styles.libraryContent}
     >
-      <Text fontSize="24px" fontWeight={400} lineHeight="150%">
+      <Text fontSize="24px" lineHeight="150%" className={styles.libraryText}>
         {data.title}
       </Text>
-      <Link
-        flexDirection="row"
-        alignItems="center"
-        gap={4}
-        display="flex"
-        href={data.button_cta.href}
-      >
+      <div className={styles.animalPillButton}>
         <Text>{data.button_cta.title}</Text>
-        <Icon name="arrow" />
-      </Link>
+        <ArrowForwardIcon />
+      </div>
     </Box>
-  </Flex>
+  </div>
 );
 
 function Library({ data }: LibraryProps) {
   return (
-    <Box backgroundColor="white" textColor="#000" p={10}>
-      <Box fontSize="32px">
+    <Box
+      backgroundColor="white"
+      textColor="#000"
+      p={12}
+      className={styles.librarySection}
+    >
+      <Box className={styles.sectionTitle}>
         <RichTextRenderer data={data.title} />
       </Box>
+
       <RichTextRenderer data={data.description} />
 
-      <Flex direction="row" justify="center">
+      <Flex direction="row" justify="space-between" className={styles.holder}>
         {data.learn_more_cards.map((card) => (
           <Card data={card} />
         ))}

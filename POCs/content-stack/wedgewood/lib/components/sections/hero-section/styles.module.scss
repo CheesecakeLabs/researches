@@ -1,0 +1,25 @@
+
+    .heroSectionText {
+
+        .boldTitle {
+            font-size: 3.5rem;
+            color: #000 !important;
+        }
+
+        .normalTitle {
+            font-size: 3.5rem;
+            margin-bottom: -20px;
+            font-weight: 400 !important;
+            color: #000 !important;
+        }
+
+        .description {
+            font-weight: 500;
+            color: #000 !important;
+            max-width: 90%;
+        }
+    }
+    
+    .heroImage {
+        max-height: 75% !important;
+    }

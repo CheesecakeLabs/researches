@@ -4,6 +4,8 @@ import {
   MouseParallaxContainer,
 } from 'react-parallax-mouse';
 
+import styles from './styles.module.scss';
+
 import type { AnimalImage } from '~/lib/types/pages';
 
 interface HeroSectionProps {
@@ -13,6 +15,7 @@ interface HeroSectionProps {
   boldTitle: string;
   description: string;
   animalImages: AnimalImage[];
+  singlePromoImage?: string;
 }
 
 function HeroSection({
@@ -22,6 +25,7 @@ function HeroSection({
   boldTitle,
   description,
   normalTitle,
+  singlePromoImage,
 }: HeroSectionProps) {
   const imagesPositions = [
     { justifyContent: 'center', alignItems: 'center', marginTop: 32 }, // centro
@@ -30,10 +34,11 @@ function HeroSection({
     { bottom: 0, left: 0 }, // baixo-esquerda
     { bottom: 0, right: 0, marginBottom: 20 }, // baixo-direita
   ];
+
   return (
     <Box
       flex={1}
-      h="100vh"
+      h="80vh"
       position="relative"
       bgImage={backgroundImage}
       bgSize="cover"
@@ -48,8 +53,8 @@ function HeroSection({
           display: 'flex',
           gridTemplateColumns: 'auto auto auto auto auto',
         }}
-        globalFactorX={0.3}
-        globalFactorY={0.3}
+        globalFactorX={0}
+        globalFactorY={0}
         resetOnLeave
       >
         <Flex
@@ -59,80 +64,102 @@ function HeroSection({
           align="flex-start"
           pl={12}
           h="100%"
+          className={styles.heroSectionText}
         >
-          <Text fontSize="4xl" fontWeight="semibold" color="gray.700">
+          <Text
+            fontWeight="semibold"
+            color="gray.700"
+            className={styles.normalTitle}
+          >
             {normalTitle}
           </Text>
-          <Text fontSize="4xl" fontWeight="extrabold" color="gray.700">
+          <Text
+            fontWeight="extrabold"
+            color="gray.700"
+            className={styles.boldTitle}
+          >
             {boldTitle}
           </Text>
-          <Text fontSize="xl" color="gray.600" mt={4}>
+          <Text
+            fontSize="xl"
+            color="gray.600"
+            mt={4}
+            className={styles.description}
+          >
             {description}
           </Text>
         </Flex>
 
         <Flex
           flex={1}
-          h="100vh"
-          direction="column"
+          h="80vh"
+          direction={singlePromoImage ? 'row' : 'column'}
           position="relative"
           overflow="hidden"
-          justify="center"
+          justify={singlePromoImage ? 'end' : 'center'}
           align="center"
         >
-          <MouseParallaxChild
-            factorX={0.1}
-            factorY={0.1}
-            style={{
-              background: `url(${rightbackgroundImage})`,
-              position: 'absolute',
-              right: 0,
-              backgroundPositionY: '50%',
-              zIndex: 0,
-              transform: 'translateX(30%)',
-              backgroundSize: 'auto',
-              backgroundRepeat: 'no-repeat',
-              width: '100%',
-              height: '100%',
-              backfaceVisibility: 'hidden',
-            }}
-          />
-          <Box
-            zIndex={12}
-            position="relative"
-            width="400px"
-            height="400px"
-            marginLeft={28}
-            mt={12}
-            alignItems="center"
-            justifyContent="center"
-            display="flex"
-          >
-            {animalImages?.map((animal, index) => (
+          {singlePromoImage && (
+            <Image src={singlePromoImage} className={styles.heroImage} />
+          )}
+
+          {!singlePromoImage && (
+            <>
               <MouseParallaxChild
-                key={animal._metadata.uid}
-                factorX={0.2}
-                factorY={0.2}
+                factorX={0.1}
+                factorY={0.1}
                 style={{
-                  zIndex: 10,
-                  width: '90px',
-                  height: '90px',
-                  position: index === 0 ? 'relative' : 'absolute',
-                  ...imagesPositions[index],
+                  background: `url(${rightbackgroundImage})`,
+                  position: 'absolute',
+                  right: 0,
+                  backgroundPositionY: '50%',
+                  zIndex: 0,
+                  transform: 'translateX(30%)',
+                  backgroundSize: 'auto',
+                  backgroundRepeat: 'no-repeat',
+                  width: '100%',
+                  height: '100%',
+                  backfaceVisibility: 'hidden',
                 }}
+              />
+              <Box
+                zIndex={12}
+                position="relative"
+                width="400px"
+                height="400px"
+                marginLeft={28}
+                mt={12}
+                alignItems="center"
+                justifyContent="center"
+                display="flex"
               >
-                <Image
-                  src={animal.animal_image.url}
-                  backgroundColor={animal.background_color.hex}
-                  borderRadius="full"
-                  zIndex={11}
-                  w="100%"
-                  h="100%"
-                  alt={`Imagem ${index + 1}`}
-                />
-              </MouseParallaxChild>
-            ))}
-          </Box>
+                {animalImages?.map((animal, index) => (
+                  <MouseParallaxChild
+                    key={animal._metadata.uid}
+                    factorX={0.2}
+                    factorY={0.2}
+                    style={{
+                      zIndex: 10,
+                      width: '90px',
+                      height: '90px',
+                      position: index === 0 ? 'relative' : 'absolute',
+                      ...imagesPositions[index],
+                    }}
+                  >
+                    <Image
+                      src={animal.animal_image.url}
+                      backgroundColor={animal.background_color.hex}
+                      borderRadius="full"
+                      zIndex={11}
+                      w="100%"
+                      h="100%"
+                      alt={`Imagem ${index + 1}`}
+                    />
+                  </MouseParallaxChild>
+                ))}
+              </Box>
+            </>
+          )}
         </Flex>
       </MouseParallaxContainer>
     </Box>
