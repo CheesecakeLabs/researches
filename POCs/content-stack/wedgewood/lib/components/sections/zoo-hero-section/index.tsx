@@ -30,9 +30,13 @@ function ZooHeroSection({ data }: ZooHeroSectionProps) {
         />
       </Box>
       <Box className={styles.heroContent}>
-        <RichTextRenderer data={data.title} />
+        <Box textColor="blackAlpha.800">
+          <RichTextRenderer data={data.title} />
+        </Box>
 
-        <Text className={styles.contentDesc}>{data.description}</Text>
+        <Text textColor="blackAlpha.800" className={styles.contentDesc}>
+          {data.description}
+        </Text>
         <Text className={styles.contentSub}>{data.subdescription}</Text>
 
         <a href={data.button_cta.href}>
