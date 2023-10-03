@@ -1,62 +1,65 @@
 .librarySection {
-    .sectionTitle {
-        margin-bottom: 24px;
-        p {
-            font-weight: 400;
-            font-size: 32px;
-        }
-    }
-
+  .sectionTitle {
+    margin-bottom: 24px;
     p {
-        font-weight: 500;
-        font-size: 1.2rem;
+      font-weight: 400;
+      font-size: 32px;
     }
+  }
 
-    .holder {
-        margin-top: 52px;
+  p {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
 
-        .libraryItem {
-            border-radius: 16px;
-            max-width: 49%;
-            display: flex;
-            padding: 16px;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
+  .holder {
+    margin-top: 52px;
 
-            &:hover {
-                background-color: #532F45;
+    .libraryItem {
+      border-radius: 16px;
+      max-width: 49%;
+      display: flex;
+      padding: 16px;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
 
-                .libraryText {
-                    color: #fff;
-                }
+      &:hover {
+        background-color: #532f45;
 
-                .animalPillButton {
-                    color: #fff;
-                    gap: 32px;
-                }
-            }
-
-            .libraryImage {
-                margin: 0;
-                width: 90%;
-            }
-
-            .libraryText {
-                width: 100%;
-                font-weight: 500;
-                font-size: 2rem;
-            }
-
-            .animalPillButton {
-                font-weight: 500;
-                color: #1C705E;
-                font-size: 1.1rem;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 16px;
-                transition: gap 0.2s ease-in-out;
-            }
+        .libraryText {
+          color: #fff;
         }
+
+        .animalPillButton {
+          color: #fff;
+          gap: 32px;
+        }
+      }
+
+      .libraryImage {
+        margin: 0;
+        overflow: hidden;
+        width: 90%;
+        object-fit: cover;
+        border-radius: 20px;
+      }
+
+      .libraryText {
+        width: 100%;
+        font-weight: 500;
+        font-size: 2rem;
+      }
+
+      .animalPillButton {
+        font-weight: 500;
+        color: #1c705e;
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        transition: gap 0.2s ease-in-out;
+      }
     }
+  }
 }

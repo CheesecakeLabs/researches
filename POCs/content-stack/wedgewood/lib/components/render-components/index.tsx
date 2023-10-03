@@ -14,7 +14,6 @@ import {
   WildGrowth,
   ZooHeroSection,
 } from '../sections';
-
 import type { PagesComponent } from '~/lib/types/pages';
 
 interface RenderComponentsProps {

@@ -1,10 +1,9 @@
 import { Box, Image, Text, VStack, Flex } from '@chakra-ui/react';
 
 import RichTextRenderer from '../../rich-text-renderer';
+import type { Testimonials as DataType, Testimony } from '~/lib/types/pages';
 
 import styles from './styles.module.scss';
-
-import type { Testimonials as DataType, Testimony } from '~/lib/types/pages';
 
 interface TestimonialsProps {
   data: DataType;
@@ -98,18 +97,16 @@ function Testimonials({ data }: TestimonialsProps) {
           overflowX="auto"
           className={styles.testimonialsSectionHolder}
         >
-          {[...data.testimonial_card, ...data.testimonial_card].map(
-            (testimonial, idx) => (
-              <TestimonialCard
-                key={idx}
-                authorDescription={testimonial.author_description}
-                authorImage={testimonial.author_photo.url}
-                authorName={testimonial.author_name}
-                location={testimonial.location}
-                testimony={testimonial.testimony}
-              />
-            )
-          )}
+          {data.testimonial_card.map((testimonial, idx) => (
+            <TestimonialCard
+              key={idx}
+              authorDescription={testimonial.author_description}
+              authorImage={testimonial.author_photo.url}
+              authorName={testimonial.author_name}
+              location={testimonial.location}
+              testimony={testimonial.testimony}
+            />
+          ))}
         </Flex>
       </VStack>
     </Box>
