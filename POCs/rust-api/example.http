@@ -1,0 +1,19 @@
+POST http://localhost:9093/ HTTP/1.1
+content-type: application/json
+
+{
+    "message": "Hello First Messagem"
+}
+
+###
+
+GET http://localhost:9093/messages HTTP/1.1
+
+###
+
+POST http://localhost:9093 HTTP/1.1
+content-type: application/json
+
+{
+    "message": "Hello Second Messagem"
+}
