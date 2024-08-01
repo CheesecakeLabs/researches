@@ -1,10 +1,7 @@
-
-/* 
 use crate::http::AppState;
-use crate::{ repository::MessageRepository, models::CreateMessageRequest};
-use axum::{http::StatusCode, response::IntoResponse,  routing::post, Json, Router};
-use std::sync::Arc;
-use axum::extract::State;
+use crate::{ repository::MessageRepository, models::CreateMessageRequest, models::Message};
+use axum::{http::StatusCode, response::IntoResponse, Json};
+use axum::extract::{Path, State};
 
 
 pub async fn create_message<MR: MessageRepository>(
@@ -17,46 +14,41 @@ pub async fn create_message<MR: MessageRepository>(
         .unwrap();
     Ok(Json(message))
 }
-// Como buscar DB from state
 
+pub async fn get_messages<MR: MessageRepository>(State(state): State<AppState<MR>>,) ->Result<impl IntoResponse, StatusCode>{
+    let all_message = state
+        .db
+        .get_messages()
+        .unwrap();
+    Ok(Json(all_message))
+}
 
-async fn create_message(State(db): State<Arc<AppState>>,Json(payload): Json<CreateMessageRequest>)->Result<impl IntoResponse, StatusCode>{
-    let message = db.create_message(payload);
+pub async fn delete_message<MR: MessageRepository>(State(state): State<AppState<MR>>, Path(id): Path<i32>,)-> Result<impl IntoResponse, StatusCode>{
+    let delete_message = state
+        .db
+        .delete_message(id)
+        .unwrap();
+    Ok(Json(delete_message))
+
+}
+pub async fn get_message<MR: MessageRepository>(State(state): State<AppState<MR>>, Path(id): Path<i32>,)-> Result<impl IntoResponse, StatusCode>{
+    let delete_message = state
+        .db
+        .get_message(id)
+        .unwrap();
+    Ok(Json(delete_message))
+
+}
+
+pub async fn update_message<MR: MessageRepository>(
+    State(state): State<AppState<MR>>,
+    Json(payload): Json<Message>, 
+   // Path(id): Path<i32>,
+) ->Result<impl IntoResponse, StatusCode> {
+    let message = state
+        .db
+        //.update_message(id, payload)
+        .update_message(payload)
+        .unwrap();
     Ok(Json(message))
 }
-#[get("/events")]
-async fn get_events(db:web::Data<Database>)->HttpResponse{
-    let events = db.get_events();
-    HttpResponse::Ok().json(events)
-}
-
-#[get("/events/{id}")]
-async fn get_event(db:web::Data<Database>,path:web::Path<i32>)->HttpResponse{
-    let event = db.get_event(path.into_inner());
-    match event {
-        Some(event)=>HttpResponse::Ok().json(event),
-        None=>HttpResponse::NotFound().body("Not Found")
-    }
-}
-
-
-
-#[delete("/events/{id}")]
-async fn delete_event(db:web::Data<Database>,path:web::Path<i32>)->HttpResponse{
-    let event = db.delete_event(path.into_inner());
-    match event {
-        Ok(event)=>HttpResponse::Ok().json(event),
-        Err(_)=>HttpResponse::InternalServerError().body("Internal Server Error")
-    }
-}
-
-#[put("/events")]
-async fn update_event(db:web::Data<Database>,event:web::Json<Event>)->HttpResponse{
-    let event = db.update_event(event.into_inner());
-    match event {
-        Ok(event)=>HttpResponse::Ok().json(event),
-        Err(_)=>HttpResponse::InternalServerError().body("Internal Server Error")
-    }
-}
-
-    */

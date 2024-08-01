@@ -6,6 +6,9 @@ use diesel::{
 use crate::models::{CreateMessageRequest, Message};
 use crate::schema::messages;
 use crate::repository::MessageRepository;
+use crate::pg_database::messages::id;
+use diesel::QueryDsl;
+use diesel::ExpressionMethods;
 
 pub type DBPool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
@@ -40,26 +43,37 @@ impl MessageRepository for Database{
         .get_result(&mut self.pool.get().unwrap())?)
     }
 
-    /* 
-
-    pub fn get_messages(&self) -> Vec<Message> {
-        
-        messages
-            .load::<Message>(&mut self.pool.get().unwrap())
-            .expect("Failed to get events.")
-    }
-
-    pub fn get_message(&self, find_id:i32) -> Option<Message> {
-        messages
-            .find(find_id)
-            .first::<Message>(&mut self.pool.get().unwrap())
-            .ok()
-    }
-
     
 
-    pub fn delete_message(&self,find_id:i32)->Result<usize,diesel::result::Error>{
-        diesel::delete(messages.filter(id.eq(find_id))).execute(&mut self.pool.get().unwrap())
+    fn get_messages(&self) -> Result<Vec<Message>,anyhow::Error> { 
+        use crate::pg_database::messages::dsl::messages; 
+        Ok(messages
+            .load::<Message>(&mut self.pool.get().unwrap())
+            .expect("Failed to get events."))
+    }
+
+    fn delete_message(&self,find_id:i32)->Result<usize,anyhow::Error>{
+        use crate::pg_database::messages::dsl::messages;
+        Ok(diesel::delete(messages.filter(id.eq(find_id))).execute(&mut self.pool.get().unwrap())?)
+    }
+
+    fn get_message(&self, find_id:i32) -> Result<Message,anyhow::Error> {
+        use crate::pg_database::messages::dsl::messages;
+        Ok(messages
+            .find(find_id)
+            .first::<Message>(&mut self.pool.get().unwrap())?)
+    }
+
+    fn update_message(&self,message:Message)->Result<Message,anyhow::Error>{
+        use crate::pg_database::messages::dsl::messages;
+        Ok(diesel::update(messages.filter(id.eq(message.id))).set(&message).get_result(&mut self.pool.get().unwrap())?)
+    }
+
+    /* 
+
+     fn update_message(&self,find_id: i32, message:CreateMessageRequest)->Result<Message,anyhow::Error>{
+        use crate::pg_database::messages::dsl::messages;
+        Ok(diesel::update(messages.filter(id.eq(find_id))).set(&message).get_result(&mut self.pool.get().unwrap())?)
     }
 
     pub fn update_message(&self,message:Message)->Result<Message,diesel::result::Error>{
