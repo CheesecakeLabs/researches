@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@pinata/sdk": "^1.1.23",
-    "axios": "^0.21.1",
+    "axios": "^1.13.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "ethers": "^5.3.1",
